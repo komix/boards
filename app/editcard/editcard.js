@@ -66,6 +66,7 @@ angular.module('lnd')
         $scope.card.comments.push(copy);
         comment.text = "";
         $scope.showCommentAdd = false;
+        $scope.editCard();
     }
 
 
