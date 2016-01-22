@@ -90,7 +90,7 @@ angular.module('lnd')
         }
         $timeout(function() {
           $scope.columnToShow = false;
-        }, 3000);
+        }, 7000);
     }
 
 
