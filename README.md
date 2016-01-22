@@ -5,3 +5,5 @@ $ nmp start
 As simple as that.
 
 You need npm and bower for this to work.
+
+npm will run $npm install and $bower install for you.
