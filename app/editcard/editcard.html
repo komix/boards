@@ -1,0 +1,111 @@
+<div class="container-fluid">
+	<div class="row profile-data">
+		<div class="col-sm-6 col-md-3" >
+			<div ng-click="triggerInput()" class="editable editable-image-container">
+				<img ng-show="card.attachments.length" ng-src="{{card.attachments[0]}}">
+				<img ng-hide="card.attachments.length" src="content/images/placeholder_cropped.jpg">
+				<div class="overlay">
+					<a href="" class="btn"><span ng-hide="card.attachments.length">add attachment</span><span ng-show="card.attachments.length">add more</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<div class="profile-name">
+				<h2>{{card.title}}</h2>
+				<img ng-src="{{board.image}}">
+				<h3>{{board.title}}</h3>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6">
+			<div class="members-container">
+				<div class="custom-checkbox">
+					<div ng-show="members.length" class="custom-checkbox">
+	                    <label ng-repeat="member in members" ng-hide="member.id === auth.id" ng-class="{selected: card.members[member.id]}">
+	                        <img ng-src="{{member.image}}">
+	                        <p>{{member.name}}</p>
+	                        <input type="checkbox" ng-model="card.members[member.id]" ng-change="editCard()">
+	                        <i class="fa fa-plus" ng-hide="card.members[member.id]"></i>
+	                        <i class="fa fa-check-square" ng-show="card.members[member.id]"></i>
+	                    </label>
+	                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dates-container row">
+		<div class="datepicker-container col-md-4 col-sm-6">
+			<uib-datepicker ng-model="card.dueDate" min-date="minDate" show-weeks="false" class="datepicker"></uib-datepicker>
+		</div>
+		<div class="time-inputs-container col-md-4 col-sm-6">
+			<div class="time-inputs">
+				<div class="inputs-container">
+					<h4>Estimated:</h4>
+					<div><span>Months:</span><input type="number" ng-model="card.timeTracking.estimatedTime.month" ng-change="watchForMax()"></div>
+					<div><span>Days:</span><input type="number" ng-model="card.timeTracking.estimatedTime.day" ng-change="watchForMax()"></div>
+					<div><span>Hours:</span><input type="number" ng-model="card.timeTracking.estimatedTime.hour" ng-change="watchForMax()"></div>
+					<div><span>Minutes:</span><input type="number" ng-model="card.timeTracking.estimatedTime.minute" ng-change="watchForMax()"></div>
+				</div>
+				<div class="inputs-container">
+					<h4>Spent:</h4>
+					<div><span>Months:</span><input type="number" ng-model="card.timeTracking.spentTime.month" ng-change="watchForMax()"></div>
+					<div><span>Days:</span><input type="number" ng-model="card.timeTracking.spentTime.day" ng-change="watchForMax()"></div>
+					<div><span>Hours:</span><input type="number" ng-model="card.timeTracking.spentTime.hour" ng-change="watchForMax()"></div>
+					<div><span>Minutes:</span><input type="number" ng-model="card.timeTracking.spentTime.minute" ng-change="watchForMax()"></div>
+				</div>
+				<div class="inputs-container">
+					<h4>Remaining</h4>
+					<div><span>Months:</span><input type="number" ng-model="card.timeTracking.remainingTime.month" ng-change="watchForMax()"></div>
+					<div><span>Days:</span><input type="number" ng-model="card.timeTracking.remainingTime.day" ng-change="watchForMax()"></div>
+					<div><span>Hours:</span><input type="number" ng-model="card.timeTracking.remainingTime.hour" ng-change="watchForMax()"></div>
+					<div><span>Minutes:</span><input type="number" ng-model="card.timeTracking.remainingTime.minute" ng-change="watchForMax()"></div>
+				</div>
+			</div>
+		</div>
+		<div class="card-checklists-container col-md-4 col-sm-12">
+			<div class="checklists">
+				<div ng-show="card.checklist.length" class="custom-checkbox">
+					<label ng-repeat="check in card.checklist track by $index" ng-class="{selected: card.checklist[$index].checked}">
+						<input type="checkbox" ng-model="card.checklist[$index].checked" ng-change="editCard()">
+						<h4>{{check.task}}</h4>
+						<i ng-show="card.checklist[$index].checked" class="fa fa-check-square-o"></i>
+						<i ng-hide="card.checklist[$index].checked" class="fa fa-square-o"></i>
+					</label>
+				</div>
+				<h3 ng-hide="card.checklist.length">You do not have checklists yet!</h3>
+
+				<div class="add-list add-card" ng-class="{active: showChecklistAdd}">
+					<textarea ng-model="newCheck.task" placeholder="Type here to add a checklist..." ng-focus="showChecklistAdd = true"></textarea>
+					<a href="" class="btn btn-success" ng-click="addChecklist(newCheck)">add checklist</a>
+					<i class="fa fa-times" ng-click="showChecklistAdd = false; newCheck.task = ''"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="comments-container">
+				<div ng-repeat="comment in card.comments" class="comment">
+					<div class="comment-header">
+						<img ng-src="{{comment.author.image}}">
+						<h4>{{comment.author.name}}</h4>
+					</div>
+					<div class="comment-text">
+						<p>{{comment.text}}</p>
+					</div>
+				</div>
+				
+
+				<div class="add-list add-card" ng-class="{active: showCommentAdd}">
+					<textarea ng-model="newComment.text" placeholder="Type here to add a comment..." ng-focus="showCommentAdd = true"></textarea>
+					<a href="" class="btn btn-success" ng-click="addComment(newComment)">add comment</a>
+					<i class="fa fa-times" ng-click="showCommentAdd = false; newComment.text = ''"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<input type="file" id='photo-input' onchange="angular.element(this).scope().onFile(this.files[0])">

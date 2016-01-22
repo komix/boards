@@ -1,0 +1,42 @@
+
+
+<div class="sign-in-container">
+    <div class="sign-in">
+        <div class="brand-form no-top-padding">
+            <div ng-click="triggerInput()" class="editable editable-image-container bottom-indent">
+                <img ng-show="board.image" ng-src="{{board.image}}">
+                <img ng-hide="board.image" src="content/images/placeholder_cropped.jpg">
+                <div class="overlay">
+                    <a href="" class="btn"><span ng-hide="board.image">add image</span><span ng-show="board.image">change</span></a>
+                </div>
+            </div>
+            <form ng-submit="sendBoard(board)">
+                <p>title</p>
+                <input ng-model="board.title" type="text" placeholder="board title" required>
+                <p>description</p>
+                <textarea ng-model="board.description" placeholder="short description" required></textarea>
+
+                
+                <div ng-show="users.length" class="custom-checkbox">
+                    <p>choose teammates</p>
+                    <label ng-repeat="user in users" ng-hide="user.id === auth.id" ng-class="{selected: board.team[user.id]}">
+                        <img ng-src="{{user.image}}">
+                        <p>{{user.name}}</p>
+                        <input type="checkbox" ng-model="board.team[user.id]">
+                        <i class="fa fa-plus" ng-hide="board.team[user.id]"></i>
+                        <i class="fa fa-check-square" ng-show="board.team[user.id]"></i>
+                    </label>
+                </div>
+                
+
+
+                <p>{{message}}</p>
+                <input ng-show="updating" type="submit" value="update">
+                <input ng-hide="updating" type="submit" value="create">
+
+            </form>
+        </div>
+    </div>
+</div>
+<input type="file" id='photo-input' onchange="angular.element(this).scope().onFile(this.files[0])">
+<!-- <p>{{board}}</p> -->

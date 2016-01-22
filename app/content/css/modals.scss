@@ -1,0 +1,44 @@
+.modal-body {
+	.show-preview {
+			display: block;
+			margin: 30px auto;
+			padding: 10 30px;
+		
+	}
+	.img-container {
+		width: 100%;
+		margin: 0 auto;
+		img {
+			width: 70%;
+		}
+	}
+	.preview-container {
+		img {
+			width: 50%;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.photo-submit-container {
+		padding: 30px;
+		text-align: center;
+	}
+}
+
+@media (max-width: 600px) {
+    .modal-body {
+    	.img-container {
+			margin: 0 auto;
+			img {
+				width: 100%;
+			}
+		}
+    	.photo-submit-container {
+	    	.btn-success, .btn-primary, .btn-danger {
+	    		display: block;
+	    		border-radius: 0;
+	    		margin-bottom: 20px;
+	    	}
+    	}
+    }
+}

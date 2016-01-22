@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<div class="row profile-data">
+		<div class="col-sm-6 col-md-3" >
+			<div ng-click="triggerInput()" ng-class="{editable: user.id === auth.id}" class="editable-image-container">
+				<img ng-show="user.image" ng-src="{{user.image}}">
+				<img ng-hide="user.image" src="content/images/placeholder_cropped.jpg">
+				<div class="overlay">
+					<a href="" class="btn"><span ng-hide="user.image">add image</span><span ng-show="user.image">change</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<div class="profile-name">
+				<h2>{{user.name}}</h2>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6">
+			<div class="boadrs-list">
+				<div ng-repeat="board in boards" ng-click="goToBoard(board.id)" ng-show="boards.length" ng-class="{editable: editBoards}" class="board-thumb">
+					<img ng-src="{{board.image}}">
+					<h4>{{board.title}}</h4>
+					<div ng-show="editBoards" class="edit-icons">
+						<a ui-sref="editboard({boardId: board.id})" ng-click="$event.stopPropagation()"><i class="fa fa-pencil"></i></a>
+						<i ng-click="deleteBoard(board.id, $index); $event.stopPropagation()" class="fa fa-trash"></i>
+					</div>
+				</div>
+				<p ng-hide="boards.length">You do not have any boards yet. Create one!</p>
+				<a ng-show="boards.length && profilePage" ng-click="editBoards = !editBoards" class="btn btn-warning phone-like" href=""><span ng-hide="editBoards">edit boards</span><span ng-show="editBoards">cancel</span></a>
+				<a ui-sref="createboard({userId: auth.id})" href="" class="btn btn-success phone-like">create board</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<input type="file" id='photo-input' onchange="angular.element(this).scope().onFile(this.files[0])">
+
+<div width="100%"><p>{{localStorage}}</p></div>

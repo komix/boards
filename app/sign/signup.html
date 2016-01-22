@@ -1,0 +1,12 @@
+<div class="brand-form">
+	<form ng-submit="signUp(user)">
+		<p>name</p>
+		<input ng-model="user.name" type="text" placeholder="Your Name" required>
+		<p>enter password</p>
+		<input ng-model="user.password" type="password" placeholder="yourPassword1991" required>
+		<p>please confirm</p>
+		<input ng-model="user.passwordConfirmation" type="password" placeholder="yourPassword1991" required>
+		<p>{{message}}</p>
+		<input type="submit" value="sign up">
+	</form>
+</div>

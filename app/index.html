@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="lnd" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="lnd" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="lnd" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="lnd" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>boards</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="bower_components/ng-cropper/dist/ngCropper.all.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="app.css"> -->
+  <link rel="stylesheet" href="content/css/style.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-controller="ApplicationController as appCtrl">
+  <div class="content-block">
+
+<header ng-show="auth.isAuth">
+  <ul class="brand-navigation main-navigation">
+    <li><a ui-sref="profile({id: auth.id})">profile</a></li>
+    <li class="sign-out-button"><a href="" ng-click="signOut()">Sign Out</a></li>
+  </ul>
+</header>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ui-view></div>
+  </div>
+  
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src='http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en&v=3.20'></script>
+  <script src="bower_components/lodash/dist/lodash.min.js"></script>
+
+ <!--  // <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+  <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <!-- // <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+  <script src="bower_components/ng-cropper/dist/ngCropper.all.min.js"></script>
+  <script src="app.js"></script>
+
+  <script src="Services/helpMethodsService.js"></script>
+  <script src="Services/cropperService.js"></script>
+  <script src="Services/confirmModalService.js"></script>
+  <script src="Services/authService.js"></script>
+  <script src="Services/boardsService.js"></script>
+
+  <script src="Directives/containerDirective.js"></script>
+  <script src="Directives/draggableDirective.js"></script>
+
+  <script src="AbstractControllers/applicationController.js"></script>
+  <script src="AbstractControllers/cropController.js"></script>
+  <script src="AbstractControllers/confirmModalController.js"></script>
+
+
+  <script src="profile/profile.js"></script>
+  <script src="sign/sign.js"></script>
+  <script src="board/board.js"></script>
+  <script src="manageboards/createboard.js"></script>
+  <script src="manageboards/editboard.js"></script>
+  <script src="editcard/editcard.js"></script>
+  
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<div class="sign-in-container">
+	<div class="sign-in">
+		<ul class="brand-navigation">
+			<li ng-class="{active: path === '/signin'}"><a ui-sref="sign.in"><span>Sign In</span></a></li>
+			<li ng-class="{active: path === '/signup'}"><a ui-sref="sign.up"><span>Sign Up</span></a></li>
+		</ul>
+		<div ui-view></div>
+	</div>
+</div>

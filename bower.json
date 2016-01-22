@@ -1,0 +1,20 @@
+{
+  "name": "lnd",
+  "description": "tiny to-do app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "html5-boilerplate": "~5.2.0",
+    "jquery": "~2.2.0",
+    "angular-google-maps": "~2.2.1",
+    "angular-simple-logger": "~0.1.5",
+    "bootstrap": "~3.3.6",
+    "ng-cropper": "~0.4.1",
+    "angular-bootstrap": "~1.1.0"
+  }
+}

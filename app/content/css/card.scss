@@ -1,0 +1,162 @@
+.dates-container {
+	margin: 15px
+}
+
+
+
+.datepicker-container {
+	.datepicker {
+		background-color: rgba(0,0,0,0.7);
+		padding: 15px;
+		width: 310px;
+		display: block;
+		margin: 0 auto 15px auto;
+		.uib-day {
+			padding: 2px;
+
+		}
+		.btn-default {
+			background-color: rgba(255,255,255,0.5);
+			border: 1px solid transparent;
+			border-radius: 0;
+			color: #fff;
+			.text-info {
+				color: $brand-color;
+			}
+			&.active {
+				background-color: rgba(0,0,0,0.2);
+			}
+		}
+	}
+}
+.time-inputs-container {
+	
+	
+
+	.time-inputs {
+		background-color: rgba(0,0,0,0.7);
+		padding: 15px;
+		display: block;
+		margin: 0 auto;
+		width: 250px;
+		.inputs-container {
+			h4 {
+				color: #fff;
+				margin-top: 6px;
+			}
+			> div {
+				display: inline-block;
+				input {
+					display: block;
+					width: 50px;
+					background-color: rgba(255,255,255,0.5);
+					color: #fff;
+					border: 2px solid transparent;
+					padding: 3px 0 3px 8px;
+					&:focus {
+						outline: none;
+						border: 2px solid #fff;
+					}
+				}
+				span {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+.card-checklists-container {
+	margin-bottom: 15px;
+	.checklists {
+		background-color: rgba(0,0,0,0.7);
+		padding: 15px;
+		width: 100%;
+		h3 {
+			color: #fff;
+		}
+		a {
+			text-transform: uppercase;
+			border-radius: 0;
+		}
+		.custom-checkbox {
+			margin-top: 0;
+			label {
+				position: relative;
+				color: #fff;
+				padding-left: 50px;
+				height: auto;
+				i {
+					position: absolute;
+					left: 10px;
+					top: 50%;
+					line-height: 0;
+				}
+			}
+		}
+	}
+}
+
+.comments-container {
+	max-width: 600px;
+	margin: 0 auto;
+	.comment {
+		margin-bottom: 15px;
+		.comment-header {
+			background-color: rgba(0,0,0,0.7);
+			height: 65px;
+			img {
+				height: 100%;
+				display: inline-block;
+			}
+			h4 {
+				display: inline-block;
+				color: #fff;
+				margin-left: 15px;
+			}
+		}
+		.comment-text {
+			background-color: rgba(255,255,255,0.5);
+			padding: 15px;
+			p {
+				color: #fff;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.dates-container {
+		margin: 0;
+	}
+	.datepicker-container {
+		padding: 0;
+		margin-top: 15px;
+		.datepicker {
+			display: block;
+		}
+	}
+	.time-inputs {
+		.inputs-container {
+			display: block; 
+		}
+	}
+	.card-checklists-container {
+		padding: 0;
+		padding-top: 15px;
+		.checklists {
+
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+

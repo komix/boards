@@ -1,0 +1,39 @@
+<div class="board-container">
+	<div class="board" compute-width>
+		<div ng-show="board.columns.length" ng-repeat="column in board.columns track by rand($index)" class="board-column">
+			<a ng-click="deleteColumn($index, column.title)" href=""><i class="fa fa-remove delete-column"></i></a>
+			<a ng-focus="getColumnInfo($index)" href="" class="show-column-info"><i class="fa fa-info-circle"></i></a>
+			<h4>{{column.title}}</h4>
+			<div ng-show="columnToShow === $index" class="column-info">
+				<h4>Tasks: {{column.cards.length}}</h4>
+				<h4>Estimated time: {{columnInfo.estimatedSum}}</h4>
+				<h4>Remaining time: {{columnInfo.remainingSum}}</h4>
+			</div>
+
+
+
+			<div class="add-list add-card" ng-class="{active: showCardAdd === column.id}">
+				<textarea ng-model="line.newCard.title" placeholder="Type here to add a card..." ng-focus="$parent.showCardAdd = column.id"></textarea>
+				<a href="" class="btn btn-success" ng-click="addCard(line.newCard, $index)">add card</a>
+				<i class="fa fa-times" ng-click="showCardAdd = 0; newCard.title = ''"></i>
+			</div>
+			<div ng-repeat="card in column.cards track by rand($index)" board="board" index="{{$index}}" column-index="{{$parent.$index}}" class="board-card" draggable>
+				<img ng-show="card.attachments[0]" ng-src="{{card.attachments[0]}}">
+				<div class="card-text">
+					<h5>{{card.title}}</h5>
+					<div class="edit-icons">
+						<a ui-sref="editcard({boardId: board.id, columnId: column.id, cardId: card.id})" ng-click="$event.stopPropagation()"><i class="fa fa-pencil"></i></a>
+						<i ng-click="deleteCard($parent.$index, $index, card.title); $event.stopPropagation()" class="fa fa-trash"></i>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+
+		<div class="add-list" ng-class="{active: addListForm}">
+			<input type="text" ng-model="newList.title" placeholder="Add a list..." ng-focus="addListForm = true">
+			<a href="" class="btn btn-success" ng-click="addList(newList)">add list</a>
+			<i class="fa fa-times" ng-click="addListForm = false; newList.name = ''"></i>
+		</div>
+	</div>
+</div>
